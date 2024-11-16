@@ -4,6 +4,7 @@ import { DomainGroupController } from './domain-group.controller';
 import { DomainModule } from './domain/domain.module';
 import { DomainGroup } from "../../database/entities/domain-group.entity";
 import { TypeOrmModule } from "@nestjs/typeorm";
+import { CachePolicyModule } from './cache-policy/cache-policy.module';
 
 @Module({
   providers: [DomainGroupService],
@@ -11,6 +12,7 @@ import { TypeOrmModule } from "@nestjs/typeorm";
   imports: [
     DomainModule,
     TypeOrmModule.forFeature([DomainGroup]),
+    CachePolicyModule,
   ]
 })
 export class DomainGroupModule {}

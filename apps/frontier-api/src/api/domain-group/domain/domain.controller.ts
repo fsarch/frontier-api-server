@@ -1,5 +1,4 @@
 import { Body, Controller, Get, Param, Post, UseGuards } from '@nestjs/common';
-import { DomainGroupService } from "../domain-group.service";
 import { ApiBearerAuth, ApiTags } from "@nestjs/swagger";
 import { AuthGuard } from "../../../fsarch/auth/guards/auth.guard";
 import { Roles } from "../../../fsarch/uac/decorators/roles.decorator";

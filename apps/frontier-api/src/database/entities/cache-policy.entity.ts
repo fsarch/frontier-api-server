@@ -30,7 +30,7 @@ export class CachePolicy {
   name: string;
 
   @Column({
-    name: 'enable_cache_tag',
+    name: 'enable_cache_tags',
     nullable: false,
     default: false,
   })

@@ -13,8 +13,8 @@ async function bootstrap() {
   });
 
   const config = new DocumentBuilder()
-    .setTitle('Image-Server')
-    .setDescription('The Image-Server API description')
+    .setTitle('Frontier-API-Server')
+    .setDescription('The Frontier API-Server is a utility service for configuring and managing the frontier-workers')
     .addBearerAuth()
     .setVersion('1.0')
     .build();
