@@ -1,0 +1,27 @@
+uac:
+  type: 'static'
+  users:
+    - user_id: 'abcdef'
+      permissions:
+        - manage
+
+auth:
+  type: 'jwt-jwk'
+  jwkUrl: ''
+
+database:
+  type: cockroachdb
+  host: localhost
+  username: postgres
+  password: 'postgres'
+  database: dev_frontier-server
+  ssl:
+    rejectUnauthorized: false
+    ca:
+      path: ./config/certs/ca.crt
+
+remote-events:
+  type: static
+  hosts:
+    - 127.0.0.1:8080
+    - 127.0.0.1:3000

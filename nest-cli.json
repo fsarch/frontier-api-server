@@ -1,0 +1,20 @@
+{
+  "monorepo": true,
+  "root": "apps/frontier-api",
+  "sourceRoot": "apps/frontier-api/src",
+  "compilerOptions": {
+    "webpack": true,
+    "tsConfigPath": "apps/frontier-api/tsconfig.app.json"
+  },
+  "projects": {
+    "frontier-api": {
+      "type": "application",
+      "root": "apps/frontier-api",
+      "entryFile": "main",
+      "sourceRoot": "apps/frontier-api/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/frontier-api/tsconfig.app.json"
+      }
+    }
+  }
+}
