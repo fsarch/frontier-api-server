@@ -7,6 +7,7 @@ export class BaseTables1720373216667 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     const databaseType = queryRunner.connection.driver.options.type;
 
+    // region DomainGroup
     await queryRunner.createTable(
       new Table({
         name: 'domain_group',
@@ -37,6 +38,7 @@ export class BaseTables1720373216667 implements MigrationInterface {
         ],
       }),
     );
+    // endregion
 
     // region DomainGroupDomain
     await queryRunner.createTable(
@@ -86,6 +88,11 @@ export class BaseTables1720373216667 implements MigrationInterface {
         }, {
           name: 'IDX__domain_group_domain__domain_name',
           columnNames: ['domain_name'],
+        }, {
+          name: 'UI__domain_group_domain__domain_name',
+          columnNames: ['domain_name'],
+          isUnique: true,
+          where: 'deletion_time IS NULL',
         }],
       }),
     );
@@ -141,7 +148,7 @@ export class BaseTables1720373216667 implements MigrationInterface {
     );
     // endregion
 
-    // region UpstreamGroup
+    // region Upstream
     await queryRunner.createTable(
       new Table({
         name: 'upstream',
@@ -415,6 +422,10 @@ export class BaseTables1720373216667 implements MigrationInterface {
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
+    await queryRunner.dropTable('path_rule');
+    await queryRunner.dropTable('cache_policy');
+    await queryRunner.dropTable('upstream');
+    await queryRunner.dropTable('upstream_group');
     await queryRunner.dropTable('domain_group_domain');
     await queryRunner.dropTable('domain_group');
   }

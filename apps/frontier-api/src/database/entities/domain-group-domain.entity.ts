@@ -7,7 +7,7 @@ import {
 } from 'typeorm';
 
 @Entity({
-  name: 'domain_group',
+  name: 'domain_group_domain',
 })
 export class DomainGroupDomain {
   @PrimaryGeneratedColumn('uuid', {
