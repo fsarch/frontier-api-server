@@ -3,7 +3,6 @@ import { ApiBearerAuth, ApiTags } from "@nestjs/swagger";
 import { AuthGuard } from "../../../fsarch/auth/guards/auth.guard";
 import { Roles } from "../../../fsarch/uac/decorators/roles.decorator";
 import { Role } from "../../../fsarch/auth/role.enum";
-import { CachePolicyCreateDto, CachePolicyDto } from "../../../models/cache-policy.model";
 import { PathRuleService } from "./path-rule.service";
 import { PathRuleCreateDto, PathRuleDto } from "../../../models/path-rule.model";
 
