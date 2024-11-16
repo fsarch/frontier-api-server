@@ -8,7 +8,7 @@ import { CachePolicyCreateDto, CachePolicyDto, CachePolicyUpdateDto } from "../.
 
 @ApiTags('cache-policies')
 @Controller({
-  path: 'domain-group/:domainGroupId/cache-policies',
+  path: 'domain-groups/:domainGroupId/cache-policies',
   version: '1',
 })
 @ApiBearerAuth()

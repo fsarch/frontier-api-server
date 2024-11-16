@@ -40,7 +40,7 @@ export class PathRule {
     name: 'order',
     nullable: false,
   })
-  order: string;
+  order: number;
 
   @Column({
     name: 'cache_policy_id',

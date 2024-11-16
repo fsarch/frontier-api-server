@@ -5,6 +5,7 @@ import { DomainModule } from './domain/domain.module';
 import { DomainGroup } from "../../database/entities/domain-group.entity";
 import { TypeOrmModule } from "@nestjs/typeorm";
 import { CachePolicyModule } from './cache-policy/cache-policy.module';
+import { PathRuleModule } from './path-rule/path-rule.module';
 
 @Module({
   providers: [DomainGroupService],
@@ -13,6 +14,7 @@ import { CachePolicyModule } from './cache-policy/cache-policy.module';
     DomainModule,
     TypeOrmModule.forFeature([DomainGroup]),
     CachePolicyModule,
+    PathRuleModule,
   ]
 })
 export class DomainGroupModule {}

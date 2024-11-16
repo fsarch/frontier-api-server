@@ -3,30 +3,32 @@ import { ApiBearerAuth, ApiTags } from "@nestjs/swagger";
 import { AuthGuard } from "../../../fsarch/auth/guards/auth.guard";
 import { Roles } from "../../../fsarch/uac/decorators/roles.decorator";
 import { Role } from "../../../fsarch/auth/role.enum";
-import { DomainGroupDomainCreateDto, DomainGroupDomainDto } from "../../../models/domain-group-domain.model";
-import { DomainService } from "./domain.service";
+import { CachePolicyCreateDto, CachePolicyDto } from "../../../models/cache-policy.model";
+import { PathRuleService } from "./path-rule.service";
+import { PathRuleCreateDto, PathRuleDto } from "../../../models/path-rule.model";
 
-@ApiTags('domain')
+@ApiTags('path-rules')
 @Controller({
-  path: 'domain-groups/:domainGroupId/domain',
+  path: 'domain-groups/:domainGroupId/path-rules',
   version: '1',
 })
 @ApiBearerAuth()
-export class DomainController {
+export class PathRuleController {
   constructor(
-    private readonly domainGroupDomainService: DomainService
-  ) {}
+    private readonly pathRuleService: PathRuleService,
+  ) {
+  }
 
   @Post()
   @UseGuards(AuthGuard)
   @Roles(Role.manage)
   public async Create(
-    @Body() domainGroupDomainDto: DomainGroupDomainCreateDto,
+    @Body() pathRuleCreateDto: PathRuleCreateDto,
     @Param('domainGroupId') domainGroupId: string,
   ) {
-    return await this.domainGroupDomainService.Create(
+    return await this.pathRuleService.Create(
       domainGroupId,
-      domainGroupDomainDto,
+      pathRuleCreateDto,
     );
   }
 
@@ -36,10 +38,10 @@ export class DomainController {
   public async List(
     @Param('domainGroupId') domainGroupId: string,
   ) {
-    const domains = await this.domainGroupDomainService.ListByDomainGroupId(
+    const pathRules = await this.pathRuleService.ListByDomainGroupId(
       domainGroupId,
     );
 
-    return domains.map(DomainGroupDomainDto.FromDbo);
+    return pathRules.map(PathRuleDto.FromDbo);
   }
 }
